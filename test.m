@@ -11,6 +11,6 @@ pall
 add
 pall
 queue
-push 11111
+push
 add
 pall

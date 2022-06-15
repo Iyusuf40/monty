@@ -53,6 +53,7 @@ int main(int ac, char **av)
 
 	while (1)
 	{
+		num = 1;
 		gl = getline(&line, &h, stream);
 		if (gl == -1)
 		{
@@ -66,7 +67,26 @@ int main(int ac, char **av)
 		else if (!strcmp(p_argv[0], "queue"))
 			stack_or_que = 2;
 		if (p_argv[1])
+		{
 			num = atoi(p_argv[1]);
+			if (num == 0 && strcmp(p_argv[1], "0"))
+			{
+				fprintf(stderr, "L%u: usage: push integer\n", line_number);
+				if (head)
+					free_(head);
+				exit(EXIT_FAILURE);
+			}
+		}
+		else
+		{
+			if (!strcmp(p_argv[0], "push"))
+			{
+				fprintf(stderr, "L%u: usage: push integer\n", line_number);
+				if (head)
+					free_(head);
+				exit(EXIT_FAILURE);
+			}
+		}
 		for (i = 0; arr[i].opcode; i++)
 		{
 			if (p_argv[0][0] == '#')
