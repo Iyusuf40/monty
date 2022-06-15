@@ -14,6 +14,8 @@ void push(stack_t **stack,
 	item = malloc(sizeof(stack_t));
 	if (!item)
 	{
+		if (*stack)
+			free_(*stack);
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}

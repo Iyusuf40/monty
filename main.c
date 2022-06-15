@@ -94,6 +94,8 @@ int main(int ac, char **av)
 		free(line);
 		line = NULL;
 	}
+	if (head)
+		free_(head);
 	fclose(stream);
 	exit(EXIT_SUCCESS);
 }
