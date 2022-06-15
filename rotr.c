@@ -9,26 +9,19 @@
 void rotr(stack_t **stack,
 		__attribute__((unused)) unsigned int line_number)
 {
-	stack_t *current = *stack, *save, *prev;
+	stack_t *current = *stack, *save = *stack;
 
 	if (!current || !current->next)
 		return;
 
 	while (current->next)
 	{
-		prev = current->prev;
-		save = current->next;
-		current->next = prev;
-		if (prev)
-			prev->prev = current;
-		current->prev = current->next;
-		current = save;
+		current = current->next;
 	}
-	/*current->prev = NULL;*/
-	/*if (prev)
-		current->next = prev->prev;
-	else*/
-	current->next = current->prev;
+	
+	(current->prev)->next = NULL;
 	current->prev = NULL;
+	current->next = *stack;
+	save->prev = current;
 	*stack = current;
 }
