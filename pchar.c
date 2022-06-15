@@ -18,6 +18,7 @@ void pchar(stack_t **stack,
 	if (num > 127 || num < 0)
 	{
 		dprintf(2, "L%u: can't pchar, value out of range\n", line_number);
+		free_(*stack);
 		exit(EXIT_FAILURE);
 	}
 
