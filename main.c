@@ -69,7 +69,7 @@ int main(int ac, char **av)
 		if (p_argv[1])
 		{
 			num = atoi(p_argv[1]);
-			if (num == 0 && strcmp(p_argv[1], "0") && !strcmp("push", p_argv[0]))
+			if ((num == 0 && strcmp(p_argv[1], "0")) && !strcmp("push", p_argv[0]))
 			{
 				fprintf(stderr, "L%u: usage: push integer\n", line_number);
 				if (head)
@@ -112,6 +112,15 @@ int main(int ac, char **av)
 					break;
 				}
 				(arr[i]).f(&head, line_number);
+				if (!strcmp(p_argv[0], "pchar"))
+				{
+					if (num == -1)
+					{
+						fclose(stream);
+						free(line);
+						exit(EXIT_FAILURE);
+					}
+				}
 				break;
 			}
 		}

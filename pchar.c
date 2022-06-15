@@ -12,16 +12,20 @@ void pchar(stack_t **stack,
 	if (!*stack)
 	{
 		dprintf(2, "L%u: can't pchar, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
+		/*exit(EXIT_FAILURE);*/
+		num = -1;
+		return;
 	}
 
-	if (num > 127 || num < 0)
+	if ((*stack)->n > 127 || (*stack)->n < 0)
 	{
 		dprintf(2, "L%u: can't pchar, value out of range\n", line_number);
 		free_(*stack);
-		exit(EXIT_FAILURE);
+		num = -1;
+		return;
+		/*exit(EXIT_FAILURE);*/
 	}
 
-	putchar(num);
+	putchar((*stack)->n);
 	putchar('\n');
 }
