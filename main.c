@@ -79,6 +79,11 @@ int main(int ac, char **av)
 						push(&head, line_number);
 					else
 						push_end(&head, line_number);
+					if (!head)
+					{
+						fclose(stream);
+						exit(EXIT_FAILURE);
+					}
 					break;
 				}
 				(arr[i]).f(&head, line_number);

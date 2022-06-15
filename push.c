@@ -14,10 +14,10 @@ void push(stack_t **stack,
 	item = malloc(sizeof(stack_t));
 	if (!item)
 	{
+		fprintf(stderr, "Error: malloc failed\n");
 		if (*stack)
 			free_(*stack);
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		return;
 	}
 
 	item->n = num;

@@ -17,7 +17,7 @@ void push_end(stack_t **stack,
 		fprintf(stderr, "Error: malloc failed\n");
 		if (*stack)
 			free_(*stack);
-		exit(EXIT_FAILURE);
+		return;
 	}
 
 	item->n = num;
