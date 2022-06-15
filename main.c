@@ -74,6 +74,8 @@ int main(int ac, char **av)
 				fprintf(stderr, "L%u: usage: push integer\n", line_number);
 				if (head)
 					free_(head);
+				free(line);
+				fclose(stream);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -84,6 +86,8 @@ int main(int ac, char **av)
 				fprintf(stderr, "L%u: usage: push integer\n", line_number);
 				if (head)
 					free_(head);
+				free(line);
+				fclose(stream);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -102,6 +106,7 @@ int main(int ac, char **av)
 					if (!head)
 					{
 						fclose(stream);
+						free(line);
 						exit(EXIT_FAILURE);
 					}
 					break;
@@ -115,6 +120,7 @@ int main(int ac, char **av)
 			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, p_argv[0]);
 			if (head)
 				free_(head);
+			free(line);
 			fclose(stream);
 			exit(EXIT_FAILURE);
 		}
