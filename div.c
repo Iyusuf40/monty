@@ -13,7 +13,7 @@ void _div(stack_t **stack,
 
 	if (!*stack || !((*stack)->next))
 	{
-		dprintf(2, "L%u: can't sub, stack too short\n", line_number);
+		dprintf(2, "L%u: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	if ((*stack)->n == 0)
