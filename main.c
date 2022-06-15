@@ -48,7 +48,6 @@ int main(int ac, char **av)
 	if (!stream)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
-		fclose(stream);
 		exit(EXIT_FAILURE);
 	}
 
