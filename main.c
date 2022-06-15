@@ -69,7 +69,7 @@ int main(int ac, char **av)
 		if (p_argv[1])
 		{
 			num = atoi(p_argv[1]);
-			if (num == 0 && strcmp(p_argv[1], "0"))
+			if (num == 0 && strcmp(p_argv[1], "0") && !strcmp("push", p_argv[0]))
 			{
 				fprintf(stderr, "L%u: usage: push integer\n", line_number);
 				if (head)
@@ -79,7 +79,7 @@ int main(int ac, char **av)
 				exit(EXIT_FAILURE);
 			}
 		}
-		else
+		else if (p_argv[1] == NULL)
 		{
 			if (!strcmp(p_argv[0], "push"))
 			{
