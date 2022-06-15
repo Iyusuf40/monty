@@ -14,7 +14,7 @@ void push_end(stack_t **stack,
 	item = malloc(sizeof(stack_t));
 	if (!item)
 	{
-		dprintf(2, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 

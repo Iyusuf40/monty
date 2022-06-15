@@ -41,13 +41,13 @@ int main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		dprintf(2, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	stream = fopen(av[1], "r");
 	if (!stream)
 	{
-		dprintf(2, "Error: Can't open file %s\n", av[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 
@@ -87,7 +87,7 @@ int main(int ac, char **av)
 		}
 		if (i == (sizeof(arr) / sizeof(instruction_t)) - 1)
 		{
-			dprintf(2, "L%u: unknown instruction %s\n", line_number, p_argv[0]);
+			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, p_argv[0]);
 			exit(EXIT_FAILURE);
 		}
 		line_number++;
