@@ -24,7 +24,11 @@ void rotr(stack_t **stack,
 		current->prev = current->next;
 		current = save;
 	}
+	/*current->prev = NULL;*/
+	if (prev)
+		current->next = prev->prev;
+	else
+		current->next = current->prev;
 	current->prev = NULL;
-	current->next = prev->prev;
 	*stack = current;
 }
