@@ -88,8 +88,8 @@ int main(int ac, char **av)
 		if (i == (sizeof(arr) / sizeof(instruction_t)) - 1)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, p_argv[0]);
-			/*if (head)
-				free_(head);*/
+			if (head)
+				free_(head);
 			fclose(stream);
 			exit(EXIT_FAILURE);
 		}

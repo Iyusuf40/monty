@@ -11,6 +11,8 @@ void free_(stack_t *stack)
 	{
 		if (stack->next)
 			current = stack->next;
+		else
+			current = NULL;
 		free(stack);
 		stack = current;
 	}

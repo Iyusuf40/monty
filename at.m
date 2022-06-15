@@ -1,3 +1,3 @@
 push 2
-man 3
+push 3
 pall
