@@ -11,7 +11,7 @@ void sub(stack_t **stack,
 {
 	stack_t *save = *stack;
 
-	if (!((*stack)->next))
+	if (!((*stack)->next) || !*stack)
 	{
 		dprintf(2, "L%u: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
