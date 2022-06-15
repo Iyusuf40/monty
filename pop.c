@@ -9,6 +9,8 @@
 void pop(stack_t **stack,
 		__attribute__((unused)) unsigned int line_number)
 {
+	stack_t *save = *stack;
+
 	if (!*stack)
 	{
 		dprintf(2, "L%u: can't pop an empty stack\n", line_number);
@@ -18,4 +20,5 @@ void pop(stack_t **stack,
 	*stack = (*stack)->next;
 	if (*stack)
 		(*stack)->prev = NULL;
+	free(save);
 }
