@@ -11,6 +11,7 @@ int main(int ac, char **av)
 {
 	ssize_t gl;
 	size_t h = 20;
+	int stack_or_que = 1;
 	unsigned int line_number = 1, i = 0;
 	char *line = NULL;
 	FILE *stream;
@@ -33,6 +34,8 @@ int main(int ac, char **av)
 		{"pstr", pstr},
 		{"rotl", rotl},
 		{"rotr", rotr},
+		{"queue", nop},
+		{"stack", nop},
 		{NULL, NULL}
 	};
 
@@ -58,6 +61,10 @@ int main(int ac, char **av)
 		}
 		remove_new_line(line);
 		make_array(line, dl, p_argv);
+		if (!strcmp(p_argv[0], "stack"))
+			stack_or_que = 1;
+		else if (!strcmp(p_argv[0], "queue"))
+			stack_or_que = 2;
 		if (p_argv[1])
 			num = atoi(p_argv[1]);
 		for (i = 0; arr[i].opcode; i++)
@@ -66,6 +73,14 @@ int main(int ac, char **av)
 				break;
 			if (!strcmp((arr[i]).opcode, p_argv[0]))
 			{
+				if (!strcmp(p_argv[0], "push"))
+				{
+					if (stack_or_que == 1)
+						push(&head, line_number);
+					else
+						push_end(&head, line_number);
+					break;
+				}
 				(arr[i]).f(&head, line_number);
 				break;
 			}

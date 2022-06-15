@@ -67,5 +67,6 @@ void rotl(stack_t **stack,
 		__attribute__((unused)) unsigned int line_number);
 void rotr(stack_t **stack,
 		__attribute__((unused)) unsigned int line_number);
-
+void push_end(stack_t **stack,
+		__attribute__((unused)) unsigned int line_number);
 #endif
