@@ -60,6 +60,16 @@ int main(int ac, char **av)
 			free(line);
 			break;
 		}
+		if (strlen(line) == 1)
+		{
+			while (strlen(line) == 1)
+				gl = getline(&line, &h, stream);
+			if (gl == -1)
+			{
+				free(line);
+				break;
+			}
+		}
 		remove_new_line(line);
 		make_array(line, dl, p_argv);
 		if (!strcmp(p_argv[0], "stack"))
