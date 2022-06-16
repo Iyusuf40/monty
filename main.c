@@ -44,6 +44,11 @@ int main(int ac, char **av)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+	if (access(av[1], R_OK))
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
+		exit(EXIT_FAILURE);
+	}
 	stream = fopen(av[1], "r");
 	if (!stream)
 	{
