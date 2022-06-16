@@ -63,12 +63,18 @@ int main(int ac, char **av)
 		if (strlen(line) == 1)
 		{
 			while (strlen(line) == 1)
-				gl = getline(&line, &h, stream);
-			if (gl == -1)
 			{
-				free(line);
-				break;
+				gl = getline(&line, &h, stream);
+				/*if (strlen(line) == 1)
+					free(line);*/
+				if (gl == -1)
+				{
+					free(line);
+					break;
+				}
 			}
+			if (gl == -1)
+				break;
 		}
 		remove_new_line(line);
 		make_array(line, dl, p_argv);
