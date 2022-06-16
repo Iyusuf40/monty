@@ -60,13 +60,16 @@ int main(int ac, char **av)
 			free(line);
 			break;
 		}
-		if (strlen(line) == 1)
+		remove_new_line(line);
+		make_array(line, dl, p_argv);
+
+		if (!p_argv[0])
 		{
-			while (strlen(line) == 1)
+			while (!p_argv[0])
 			{
 				gl = getline(&line, &h, stream);
-				/*if (strlen(line) == 1)
-					free(line);*/
+				remove_new_line(line);
+				make_array(line, dl, p_argv);
 				if (gl == -1)
 				{
 					free(line);
@@ -76,8 +79,8 @@ int main(int ac, char **av)
 			if (gl == -1)
 				break;
 		}
-		remove_new_line(line);
-		make_array(line, dl, p_argv);
+		/*remove_new_line(line);
+		make_array(line, dl, p_argv);*/
 		if (!strcmp(p_argv[0], "stack"))
 			stack_or_que = 1;
 		else if (!strcmp(p_argv[0], "queue"))
